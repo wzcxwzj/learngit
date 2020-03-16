@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1-beta1/jquery.js"></script>
+</head>
+<body>
+    <script>
+        var host = "http://www.weather.com.cn/data/sk/101010100.html"//"http://test.idata3d.com:18080";
+ 
+        var data = {
+            username: "user",
+            password: "user"
+        };
+         
+        $.ajax({
+            url: host+"/login",
+            type: "post",
+            data:$.param(data),
+            contentType: "application/x-www-form-urlencoded;charset=utf-8;",
+            async:true
+        })
+ 
+        var param = {
+            groupList:['±±Æû'],
+            brandList:[],
+            seriesList:[],
+            carTypeList:[],
+            carSegmentList:[],
+            carSubSegmentList:[],
+            luxuryList:[],
+            energyList:[]
+        };
+        $.ajax({
+            url: host+"/market/showSelectOption",
+            type: "post",
+            data:param,
+            success: function(data){
+                debugger;
+				console.log(data);
+            },
+            error: function(data){
+                debugger;
+            }
+        })
+    </script>
+</body>
+</html>
